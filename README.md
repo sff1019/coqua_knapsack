@@ -11,11 +11,25 @@ OS: `macOS Mojave 10.14.2`
 python: `pyenv:python3.6.5`  
 pybind11: `2.2.3`
 
-## Command
+## Installation
+
+1. Clone this repository
+### SSH
+`$ git clone git@github.com:sff1019/coqua_knapsack.git`
+
+### HTTPS
+`$git clone https://github.com/sff1019/coqua_knapsack.git`
+
+2. pip install package
+From the parent directory install this package
+`$ pip install ./coqua_knapsack`
+
+## Useage Example
 
 ```
-$ clang++ -O3 -Wall -shared -std=c++11 -fPIC `python -m pybind11 --includes` -undefined dynamic_lookup [filename] -o [filename /out .cpp]`python3-config --extension-suffix`
-
+>>> import coqua_knapsack as ck
+>>> ck.max(1,2)
+2
 ```
 
 ## Knapsack
@@ -31,3 +45,7 @@ Solving knapsack problem using dynamic problem approach.
 ## knapsack_greedy.cpp
 
 Solving knapsack problem using greedy algorithm approach.
+
+## Refrence
+
+setup.py: https://github.com/pybind/python_example
