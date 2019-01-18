@@ -13,7 +13,7 @@ pybind11: `2.2.3`
 
 ## Installation
 
-1. Clone this repository
+1. Clone this repository  
 **SSH**  
 ```
 $ git clone git@github.com:sff1019/coqua_knapsack.git
