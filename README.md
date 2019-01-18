@@ -11,6 +11,11 @@ OS: `macOS Mojave 10.14.2`
 python: `pyenv:python3.6.5`  
 pybind11: `2.2.3`
 
+## Knapsack
+![Knapsack Illustration](./assets/knapsack.png)
+
+Knapsack problem is one of the most famous combinatorial optimization problem.  
+
 ## Installation
 
 1. Clone this repository  
@@ -38,19 +43,45 @@ $ pip install ./coqua_knapsack
 2
 ```
 
-## Knapsack
-![Knapsack Illustration](./assets/knapsack.png)
-
-Knapsack problem is one of the most famous combinatorial optimization problem.  
-
-
-## knapsack_dynamic.cpp
+### Dynamic Programming Approach
 
 Solving knapsack problem using dynamic problem approach.
+
+```
+import coqua_knapsack as ck
+
+weight = [3, 2, 4, 1]
+val = [100, 20, 60, 40]
+
+ck.dynamic_solver(5, weight, val, 4)
+```
+
+Returns the index and total value of the optimized solution
+
+```
+Index of items used: 1 4
+Totatl Value: 140.0
+```
 
 ## knapsack_greedy.cpp
 
 Solving knapsack problem using greedy algorithm approach.
+
+```
+import coqua_knapsack as ck
+
+weight = [3, 2, 4, 1]
+val = [100, 20, 60, 40]
+
+ck.greedy_solver(5, weight, val, 4)
+```
+
+Returns 10 solutions' index
+
+```
+[[1, 1, 0, 0], [0, 0, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+```
+
 
 ## Refrence
 
