@@ -14,15 +14,21 @@ pybind11: `2.2.3`
 ## Installation
 
 1. Clone this repository
-### SSH
-`$ git clone git@github.com:sff1019/coqua_knapsack.git`
+**SSH**  
+```
+$ git clone git@github.com:sff1019/coqua_knapsack.git
+```
 
-### HTTPS
-`$git clone https://github.com/sff1019/coqua_knapsack.git`
+**HTTPS**  
+```
+$git clone https://github.com/sff1019/coqua_knapsack.git
+```
 
-2. pip install package
+2. pip install package  
 From the parent directory install this package
-`$ pip install ./coqua_knapsack`
+```
+$ pip install ./coqua_knapsack
+```
 
 ## Useage Example
 
