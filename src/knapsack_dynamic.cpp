@@ -19,7 +19,7 @@ void knapsack_combination_solver(int len, float capacity, std::vector<float> wei
 		}
 	}
 
-	printf("Index of items used: ")
+	printf("Index of items used: ");
 	for (int i = 0; i < len+1; i++) {
 		if (flag[i]) printf("%d ", i);
 	}
@@ -44,6 +44,6 @@ float dynamic_solver(float cap, std::vector<float> weight, std::vector<float> va
 	}
 
 	knapsack_combination_solver(len, cap, weight, K);
-	printf("Total Value: ")
+	printf("Total Value: ");
 	return K[len][cap];
 }
