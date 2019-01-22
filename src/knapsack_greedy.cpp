@@ -3,7 +3,10 @@
 
 namespace py = pybind11;
 
-std::vector<std::vector<int>> greedy_solver(float cap, std::vector<float> weight, std::vector<float> val, int len) {
+/*
+ * Return list of the ids of the elements included
+ */
+std::vector<std::vector<int>> greedy_solver(float cap, std::vector<float> weight, std::vector<float> val, std::vector<int> id, int len) {
 	int counter = 0;
 	std::vector<std::vector<int>> sols(10);
 
@@ -11,14 +14,13 @@ std::vector<std::vector<int>> greedy_solver(float cap, std::vector<float> weight
 		std::vector<int> sol(len);
 		float sum_weight = 0;
 		float sum_val = 0;
+    int element_included = 0;
 		for (int i = 0; i < len; i ++) {
 			if (weight[i] > 0 && sum_weight + weight[i] <= cap) {
 				sum_weight += weight[i];
 				sum_val += val[i];
-				sol[i] = 1;
+				sol[element_included++] = id[i];
 				weight[i] = -1;
-			} else {
-				sol[i] = 0;
 			}
 		}
 		sols[counter++] = sol;
@@ -26,8 +28,3 @@ std::vector<std::vector<int>> greedy_solver(float cap, std::vector<float> weight
 
 	return sols;
 }
-//
-// PYBIND11_MODULE(knapsack, m) {
-//   m.doc() = "pybind11 example plugin"; // optional module docstring
-// 	m.def("greedy_solver", &greedy_solver);
-// }
