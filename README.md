@@ -18,6 +18,11 @@ Knapsack problem is one of the most famous combinatorial optimization problem.
 
 ## Installation
 
+1. Install `pybind11`
+```
+$ pip3 install pybind11
+```
+
 1. Clone this repository  
 **SSH**  
 ```
