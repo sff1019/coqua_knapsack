@@ -11,15 +11,15 @@ std::vector<std::vector<int>> greedy_solver(float cap, std::vector<float> weight
 	std::vector<std::vector<int>> sols(10);
 
 	while(counter < 10) {
-		std::vector<int> sol(len);
+		std::vector<int> sol;
 		float sum_weight = 0;
 		float sum_val = 0;
-    int element_included = 0;
+
 		for (int i = 0; i < len; i ++) {
 			if (weight[i] > 0 && sum_weight + weight[i] <= cap) {
 				sum_weight += weight[i];
 				sum_val += val[i];
-				sol[element_included++] = id[i];
+        sol.push_back(id[i]);
 				weight[i] = -1;
 			}
 		}
