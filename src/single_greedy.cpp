@@ -4,7 +4,7 @@
 /*
  * Return list of the ids of the elements included
  */
-std::vector<std::vector<int>> greedy_solver(
+std::vector<std::vector<int>> single_greedy_solver(
     float cap, // capacity
     int len, // length of weight/val/id
     std::vector<float> weight,
@@ -37,7 +37,7 @@ std::vector<std::vector<int>> greedy_solver(
  * Return list of the ids of the elements included
  * Only limited elements can be included
  */
-std::vector<std::vector<int>> limited_greedy_solver(
+std::vector<std::vector<int>> single_limited_greedy_solver(
     float cap, // capacity
     int len, // length of weight/val/id
     int max,
