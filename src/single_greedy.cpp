@@ -33,14 +33,22 @@ std::vector<std::vector<int>> single_greedy_solver(
 	return sols;
 }
 
-// 1割の誤差は無視する
 bool check_cap(float weight, float min_cap, float max_cap) {
   return (min_cap <= weight && weight <= max_cap) ? true : false;
 }
 
-// Check size
-bool check_size(int size, int max) {
-  return (size == max) ? true : false;
+bool check_size(int size, int comb_num) {
+  return (size == comb_num) ? true : false;
+}
+
+int find_max_element(std::vector<float>weight, int max_element, int len) {
+  for (int i = max_element; i < len; i ++) {
+    if (weight[i] != -1) {
+      return i;
+    }
+  }
+
+  return 0;
 }
 
 /*
@@ -50,13 +58,13 @@ bool check_size(int size, int max) {
 std::vector<std::vector<int>> single_limited_greedy_solver(
     float cap, // capacity
     int len, // length of weight/val/id
-    int max,
+    int comb_num,
     std::vector<float> weight,
     std::vector<float> val,
     std::vector<int> id
 ) {
 	int counter = 0;
-  int included = 0;
+  int max_element = 0;
   float min_cap = cap - (cap / 10);
   float max_cap = cap + (cap / 10);
 	std::vector<std::vector<int>> sols;
@@ -66,22 +74,28 @@ std::vector<std::vector<int>> single_limited_greedy_solver(
 		float sum_weight = 0;
 
 		for (int i = 0; i < len; i ++) {
+      // If no combinations can be added upto cap
+      if (weight[max_element] * comb_num < cap){
+        return sols;
+      }
+
 			if (weight[i] > 0 && sum_weight + weight[i] <= cap) {
 				sum_weight += weight[i];
         sol.push_back(id[i]);
 				weight[i] = -1;
-        included ++;
+        max_element = find_max_element(weight, max_element, len);
       } else if (weight[i] > cap) {
         weight[i] = -1;
+        max_element = find_max_element(weight, max_element, len);
       }
+
+      if ((int)sol.size() == comb_num) break;
 		}
 
-    if ((check_cap(sum_weight, min_cap, max_cap) && check_size((int)sol.size(), max)) && !sol.empty()) {
+    if ((check_size((int)sol.size(), comb_num) && check_cap(sum_weight, min_cap, max_cap)) && !sol.empty()) {
       sols.push_back(sol);
       counter++;
     }
-
-    if (included == len - 1) break;
 	}
 
 	return sols;
