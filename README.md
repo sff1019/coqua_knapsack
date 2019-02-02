@@ -48,6 +48,15 @@ $ pip install ./coqua_knapsack
 2
 ```
 
+### Modules
+
+This library provides 5 modules:
+- max(arg0: float, arg1: float) -> int
+- dynamic_solver(arg0: float, arg1: List[float], arg2: List[float], arg3: int) -> float
+- multiple_greedy_solver(arg0: List[float], arg1: int, arg2: int, arg3: List[List[float]], arg4: List[float], arg5: List[int]) -> List[List[int]]
+- single_greedy_solver(arg0: float, arg1: int, arg2: List[float], arg3: List[float], arg4: List[int]) -> List[List[int]]
+- single_limited_greedy_solver(arg0: float, arg1: int, arg2: int, arg3: List[float], arg4: List[float], arg5: List[int]) -> List[List[int]]
+
 ### Dynamic Programming Approach
 
 Solving knapsack problem using dynamic problem approach.
@@ -68,25 +77,51 @@ Index of items used: 1 4
 Totatl Value: 140.0
 ```
 
-## knapsack_greedy.cpp
+### Greedy Algorithm Approach
 
 Solving knapsack problem using greedy algorithm approach.
+
+### single_greedy_solver()
+
+Simply solve problem using greedy algorithm.  
+Only 1 list of weight/val/id is given.
 
 ```
 import coqua_knapsack as ck
 
 weight = [3, 2, 4, 1]
 val = [100, 20, 60, 40]
+id = [1,2,3,4]
 
-ck.greedy_solver(5, weight, val, 4)
+ck.single_greedy_solver(5, 4, weight, val, id)
 ```
 
-Returns 10 solutions' index
+Returns maximum of 10 solutions' index
 
 ```
-[[1, 1, 0, 0], [0, 0, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+[[1, 2], [3, 4]]
 ```
 
+### single_limited_greedy_solver()
+
+Simply solve problem using greedy algorithm.
+Only 1 list of weight/val/id is given.
+
+```
+import coqua_knapsack as ck
+
+weight = [4, 2, 1, 4, 1, 1, 1]
+val = [100, 20, 60, 40, 30, 60, 80]
+id = [1,2,3,4, 5, 6, 7]
+
+ck.single_greedy_solver(7, 4, 3, weight, val, id)
+```
+
+Returns maximum of 10 solutions' index
+
+```
+[[1, 2, 3],]
+```
 
 ## Refrence
 
